@@ -108,10 +108,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             throw new RuntimeException("Email already exists.");
         }
 
-        // Find role
-        var role = roleRepository.findById(request.getRoleId())
+        // Automatically assign Administrator role
+        var role = roleRepository.findById("ROL001")
                 .orElseThrow(() ->
-                        new RuntimeException("Role not found."));
+                        new RuntimeException("Administrator role (ROL001) not found."));
 
         // Create user
         User user = new User();
